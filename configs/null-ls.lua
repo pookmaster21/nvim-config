@@ -9,8 +9,6 @@ local opts = {
     null_ls.builtins.diagnostics.ruff,
     -- c
     null_ls.builtins.formatting.clang_format,
-    -- make
-    null_ls.builtins.diagnostics.checkmake,
     -- go
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.formatting.goimports_reviser,
