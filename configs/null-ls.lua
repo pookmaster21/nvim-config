@@ -16,6 +16,8 @@ local opts = {
     -- js + ts
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.formatting.prettier,
+    -- java
+    null_ls.builtins.formatting.google_java_format,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

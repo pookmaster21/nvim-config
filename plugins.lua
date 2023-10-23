@@ -25,6 +25,8 @@ local plugins = {
         "eslint-lsp",
         "prettier",
         "js-debug-adapter",
+        -- java
+        "jdtls",
       },
     },
   },
@@ -55,6 +57,10 @@ local plugins = {
       'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = {"java"},
   },
   {
     "preservim/tagbar",
