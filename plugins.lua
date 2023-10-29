@@ -10,6 +10,7 @@ local plugins = {
                 "gofumpt",
                 "goimports-reviser",
                 "golines",
+                "gomodifytags",
                 -- python
                 "black",
                 "debugpy",
