@@ -55,3 +55,13 @@ lspconfig.jdtls.setup {
         'jdtls',
     }
 }
+
+lspconfig.dockerls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+lspconfig.html.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}

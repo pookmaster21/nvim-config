@@ -28,6 +28,10 @@ local plugins = {
                 "js-debug-adapter",
                 -- java
                 "jdtls",
+                -- docker
+                "dockerfile-language-server",
+                -- html
+                "html-lsp"
             },
         },
     },
