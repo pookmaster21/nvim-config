@@ -5,12 +5,37 @@ local capabilities = config.capabilities
 
 local lspconfig = require("lspconfig")
 
+local servers = {
+    -- rust
+    "rust_analyzer",
+    -- ts + js + html
+    "tsserver",
+    "eslint",
+    -- css
+    "tailwindcss",
+    "cssls",
+    -- docker
+    "dockerls",
+    -- ruby
+    "ruby_ls",
+    -- python
+    "pyright",
+    -- c + cpp
+    "clangd",
+    -- java
+    "jdtls",
+}
+
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+end
+
 lspconfig.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = {"gopls"},
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = lspconfig.util.root_pattern("go.work", "go.mod"),
     settings = {
         gopls = {
             gofumpt = true,
@@ -23,45 +48,3 @@ lspconfig.gopls.setup {
     },
 }
 
-lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    init_options = {
-        preferences = {
-            disableSuggestions = true,
-        }
-    }
-}
-
-lspconfig.pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "python" },
-}
-
-lspconfig.clangd.setup {
-    on_attach = function(client, bufnr)
-        client.server_capabilities.signatureHelpProvider = false
-        on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-}
-
-lspconfig.jdtls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-
-    cmd = {
-        'jdtls',
-    }
-}
-
-lspconfig.dockerls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.html.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}

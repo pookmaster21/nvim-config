@@ -14,8 +14,9 @@ local opts = {
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.golines,
         -- js + ts
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "markdown" }, extra_args = { "--tab-width", "4" } }),
+        null_ls.builtins.formatting.prettier.with({ extra_args = { "--tab-width", "4" } }),
+        -- ruby
+        null_ls.builtins.formatting.rubocop,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

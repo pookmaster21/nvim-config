@@ -21,19 +21,55 @@ local plugins = {
                 "clangd",
                 "clang-format",
                 "codelldb",
-                -- js + ts
+                -- js + ts + html
                 "typescript-language-server",
                 "eslint-lsp",
                 "prettier",
-                "js-debug-adapter",
+                -- css
+                "tailwindcss-language-server",
                 -- java
                 "jdtls",
                 -- docker
                 "dockerfile-language-server",
-                -- html
-                "html-lsp"
+                "docker-compose-language-service",
+                -- ruby
+                "ruby-lsp",
+                "rubocop",
             },
         },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function ()
+            opts = require("plugins.configs.treesitter")
+            opts.ensure_installed = {
+                "lua",
+                "javascript",
+                "typescript",
+                "tsx",
+                "html",
+                "go",
+                "gomod",
+                "gosum",
+                "gowork",
+                "ruby",
+                "python",
+                "rust",
+                "templ",
+                "bash",
+                "json",
+                "c",
+                "cmake",
+                "dockerfile",
+                "gitignore",
+                "java",
+                "make",
+                "markdown",
+                "nasm",
+                "yaml",
+                "css",
+            }
+        end,
     },
     {
         "rcarriga/nvim-dap-ui",
@@ -92,7 +128,7 @@ local plugins = {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         event = "VeryLazy",
         opts = function()
             return require "custom.configs.null-ls"
@@ -172,6 +208,19 @@ local plugins = {
         end,
         build = function()
             vim.cmd [[silent! GoInstallDeps]]
+        end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        ft = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "html",
+        },
+        config = function ()
+            require("nvim-ts-autotag").setup()
         end,
     },
 }
